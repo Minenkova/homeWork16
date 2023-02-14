@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <button class="button">get Flying Planes</button>
+
+    <script>
+      // task1
+      const button = document.querySelector(".button");
+
+      class Plane {
+        name;
+        status;
+
+        constructor(namePlane, isFlying) {
+          this.status = isFlying;
+          this.name = namePlane;
+        }
+
+        get takeOff() {
+          return (this.status = true);
+          console.log(this.status);
+        }
+
+        get land() {
+          return (this.status = false);
+          console.log(this.status);
+        }
+      }
+      const planeEx = new Plane("dream");
+      // console.log(planeEx.takeOff);
+      // console.log(planeEx);
+      // console.log(planeEx.land);
+      // console.log(planeEx);
+
+      let airport = {
+        planes: [
+          new Plane("DREAM", false),
+          new Plane("Air333", true),
+          new Plane("Boing", true),
+          new Plane("WizzAir", false),
+        ],
+
+        getFlyingPlanes: function () {
+          let result = this.planes.filter((el) => {
+            return el.status === true;
+          });
+          console.log(result);
+        },
+      };
+
+      airport.getFlyingPlanes();
+
+      let oneNewPlane = {
+        planes: [new Plane("Germany", false), new Plane("Paris", true)],
+      };
+
+      let twoNewPlane = {
+        planes: [new Plane("Barselona", true), new Plane("Wiena", false)],
+      };
+
+      airport.planes.push(...oneNewPlane.planes, ...twoNewPlane.planes);
+
+      button.addEventListener("click", () => {
+        airport.getFlyingPlanes();
+        // console.log(`в небе ${airport.getFlyingPlanes().lenght}`)
+      });
+
+      //  task 2
+
+      class User {
+        constructor(name, surname) {
+          this.name = name;
+          this.surname = surname;
+        }
+
+        getFullName() {
+          console.log(this.name, this.surname);
+        }
+      }
+
+      class Student extends User {
+        constructor(name, surname, year) {
+          super(name, surname);
+          this.year = year;
+        }
+
+        getCourse() {
+          let currentYear = new Date().getFullYear();
+          console.log(`course: ${currentYear - this.year}`);
+        }
+      }
+
+      const user1 = new Student("Tata", "Minenkova", 2020);
+
+      user1.getFullName();
+      user1.getCourse();
+    </script>
+  </body>
+</html>

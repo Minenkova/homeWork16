@@ -1,0 +1,29 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #c0c2c1;
+}
+
+.button{
+    background: none;
+    border-radius: 40%;
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    color: #083d30;
+    text-transform: uppercase;
+    font-size: 2rem;
+    transition: 0.2s;
+    border: 2px solid #033522;
+}
+
+.button:hover {
+    border: 1px solid #033522;
+    background: #059183;
+    transition-delay: .5s;
+}
